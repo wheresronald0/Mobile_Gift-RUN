@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-const IndexScreen = () => {
+const RunDetailsScreen = () => {
   return (
     <View>
-      <Text style={styles.title}>IndexScreen</Text>
+      <Text style={styles.title}>RunDetailsScreen</Text>
     </View>
   );
 };
@@ -14,4 +14,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-export default IndexScreen;
+export default RunDetailsScreen;
