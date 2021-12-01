@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Card, Text } from "@ui-kitten/components";
 
+import Map from "./Map";
+
 const Header = (props) => {
   return (
     <View {...props}>
@@ -26,7 +28,7 @@ const RunCard = () => {
   return (
     <React.Fragment>
       <Card style={styles.card} header={Header} footer={Footer}>
-        <Text>Insert MAP</Text>
+        <Map />
       </Card>
     </React.Fragment>
   );
@@ -35,7 +37,6 @@ const RunCard = () => {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    margin: 2,
   },
 });
 

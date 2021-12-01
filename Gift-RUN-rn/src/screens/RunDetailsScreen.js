@@ -33,13 +33,19 @@ const RunDetailsScreen = ({ navigation }) => {
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
-        <Text category="h1">Run Details</Text>
+        <Text category="h3" style={styles.title}>
+          Run Details
+        </Text>
         <RunCard />
       </Layout>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    marginVertical: 20,
+  },
+});
 
 export default RunDetailsScreen;
