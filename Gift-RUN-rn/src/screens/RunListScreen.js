@@ -7,14 +7,19 @@ const RunListScreen = ({ navigation }) => {
     navigation.navigate("RunDetails");
   };
 
+  const navigateLogRun = () => {
+    navigation.navigate("LogRun");
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title="MyApp" alignment="center" />
+      <TopNavigation title="Your Gift-RUN's" alignment="center" />
       <Divider />
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
-        <Button onPress={navigateDetails}>OPEN DETAILS</Button>
+        <Button onPress={navigateDetails}>Run Details</Button>
+        <Button onPress={navigateLogRun}>Log Run</Button>
       </Layout>
     </SafeAreaView>
   );
