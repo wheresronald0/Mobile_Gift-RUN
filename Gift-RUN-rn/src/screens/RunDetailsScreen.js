@@ -9,6 +9,8 @@ import {
   TopNavigationAction,
 } from "@ui-kitten/components";
 
+import RunCard from "../components/RunCard";
+
 const BackIcon = (props) => <Icon {...props} name="arrow-back" />;
 
 const RunDetailsScreen = ({ navigation }) => {
@@ -32,6 +34,7 @@ const RunDetailsScreen = ({ navigation }) => {
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
         <Text category="h1">Run Details</Text>
+        <RunCard />
       </Layout>
     </SafeAreaView>
   );
