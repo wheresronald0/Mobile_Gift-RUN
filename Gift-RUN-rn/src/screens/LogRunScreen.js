@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import {
   Button,
@@ -13,17 +13,21 @@ import {
   SelectItem,
   Datepicker,
 } from "@ui-kitten/components";
+import RunDataContext from "../context/RunDataContext";
 
 const BackIcon = (props) => <Icon {...props} name="arrow-back" />;
 const CalendarIcon = (props) => <Icon {...props} name="calendar" />;
 
 const LogRunScreen = ({ navigation }) => {
+  const [runName, setRunName] = useState("");
   const [date, setDate] = React.useState(new Date());
   const [miles, setMiles] = useState("");
   const [lengthOfTime, setLengthOfTime] = useState("");
   const [selectedCharity, setSelectedCharity] = React.useState(
     new IndexPath(0)
   );
+
+  const { state, saveRunManually } = useContext(RunDataContext);
 
   const navigateBack = () => {
     navigation.goBack();
@@ -32,6 +36,8 @@ const LogRunScreen = ({ navigation }) => {
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
+
+  console.log(state);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -42,6 +48,13 @@ const LogRunScreen = ({ navigation }) => {
       />
       <Divider />
       <Layout style={{ flex: 1 }}>
+        <Input
+          label="Name of Your Run"
+          placeholder="Enter Name"
+          value={runName}
+          onChangeText={(name) => setRunName(name)}
+          style={styles.input}
+        />
         <Datepicker
           label="Date of You Run"
           placeholder="Pick Date"
@@ -75,6 +88,14 @@ const LogRunScreen = ({ navigation }) => {
           <SelectItem title="Habitat for Humanity" />
           <SelectItem title="Save the Children" />
         </Select>
+        <Button
+          style={styles.input}
+          onPress={() => {
+            saveRunManually(runName);
+          }}
+        >
+          Save Run
+        </Button>
       </Layout>
     </SafeAreaView>
   );
