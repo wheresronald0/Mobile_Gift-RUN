@@ -6,13 +6,13 @@ import {
   BottomNavigationTab,
   Icon,
 } from "@ui-kitten/components";
-import { LogRunModal } from "../components/LogRunModal";
 
+import { TopNavigator } from "./topTabNavigation";
 import { RunListNavigator } from "./mainNavigationFlow";
-import LogRunScreen from "../screens/LogRunScreen";
 import CharitiesScreen from "../screens/CharitiesScreen";
 import UserSettingsScreen from "../screens/UserSettingsScreen";
 import BadgesScreen from "../screens/BadgesScreen";
+import AutoLogRunScreen from "../screens/AutoLogRunScreen";
 
 const { Navigator, Screen, Group } = createBottomTabNavigator();
 
@@ -45,9 +45,10 @@ const TabNavigator = () => (
   >
     <Screen name="ListFlow" component={RunListNavigator} />
     <Screen name="Badges" component={BadgesScreen} />
-    <Screen name="LogRun" component={LogRunScreen} />
+    <Screen name="LogRun" component={TopNavigator} />
     <Screen name="Charities" component={CharitiesScreen} />
     <Screen name="UserSettings" component={UserSettingsScreen} />
+    <Screen name="AutoLogRun" component={AutoLogRunScreen} />
   </Navigator>
 );
 

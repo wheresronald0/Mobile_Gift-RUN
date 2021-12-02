@@ -46,23 +46,9 @@ const LogRunScreen = ({ navigation }) => {
     }
   };
 
-  //top navigation
-  const navigateBack = () => {
-    navigation.goBack();
-  };
-  const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
-  );
-
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation
-        title="Log a Run"
-        alignment="center"
-        accessoryLeft={BackAction}
-      />
-      <Divider />
-      <Layout style={{ flex: 1 }} level="1">
+    <SafeAreaView style={{ flex: 1 }} screenOptions={{ headerShown: false }}>
+      <Layout>
         <LogRunModal />
         <Input
           label="Name of Your Run"
@@ -132,6 +118,14 @@ const LogRunScreen = ({ navigation }) => {
           }}
         >
           Save Run
+        </Button>
+        <Button
+          style={styles.input}
+          onPress={() => {
+            navigation.navigate("AutoLogRun");
+          }}
+        >
+          Auto Log Run
         </Button>
       </Layout>
     </SafeAreaView>
