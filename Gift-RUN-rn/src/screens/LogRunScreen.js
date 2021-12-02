@@ -124,7 +124,7 @@ const LogRunScreen = ({ navigation }) => {
                 lengthOfTime,
                 selectedCharity
               ),
-                navigation.navigate("Home");
+                navigation.navigate("RunList");
             }
           }}
         >

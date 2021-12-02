@@ -17,10 +17,7 @@ const RunListScreen = ({ navigation }) => {
       <Divider />
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-      >
-        <Button onPress={navigateDetails}>Run Details</Button>
-        <Button onPress={navigateLogRun}>Log Run</Button>
-      </Layout>
+      ></Layout>
     </SafeAreaView>
   );
 };
