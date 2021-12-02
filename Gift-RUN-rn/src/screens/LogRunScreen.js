@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { SafeAreaView, StyleSheet } from "react-native";
 import {
   Button,
@@ -14,6 +15,7 @@ import {
   Datepicker,
 } from "@ui-kitten/components";
 import RunDataContext from "../context/RunDataContext";
+import { LogRunModal } from "../components/LogRunModal";
 
 const BackIcon = (props) => <Icon {...props} name="arrow-back" />;
 const CalendarIcon = (props) => <Icon {...props} name="calendar" />;
@@ -61,6 +63,7 @@ const LogRunScreen = ({ navigation }) => {
       />
       <Divider />
       <Layout style={{ flex: 1 }} level="1">
+        <LogRunModal />
         <Input
           label="Name of Your Run"
           placeholder="Enter Name"

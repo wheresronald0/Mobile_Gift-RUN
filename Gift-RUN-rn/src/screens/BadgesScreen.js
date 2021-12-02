@@ -1,17 +1,20 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
+import { LogRunModal } from "../components/LogRunModal";
 
-const BadgesScreen = () => {
+const BadgesScreen = ({ navigation }) => {
   return (
-    <View>
-      <Text style={styles.title}>BadgesScreen</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <TopNavigation title="Accomplishments" alignment="center" />
+      <Divider />
+      <Layout
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      ></Layout>
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 18,
-  },
-});
+const styles = StyleSheet.create({});
+
 export default BadgesScreen;
