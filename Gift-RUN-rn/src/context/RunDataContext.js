@@ -12,11 +12,20 @@ const reducer = (state, action) => {
 };
 export const RunDataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    runDetails: "",
+    runDetails: [],
   });
 
-  const saveRunManually = (name) => {
-    return dispatch({ type: "save_run", payload: name });
+  const saveRunManually = (
+    runName,
+    date,
+    miles,
+    lengthOfTime,
+    selectedCharity
+  ) => {
+    return dispatch({
+      type: "save_run",
+      payload: { runName, date, miles, lengthOfTime, selectedCharity },
+    });
   };
 
   return (
