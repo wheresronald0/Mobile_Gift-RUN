@@ -1,27 +1,58 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
+
+import ListCard from "../components/ListTile";
 
 const RunListScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TopNavigation title="Your Gift-RUN's" alignment="center" />
       <Divider />
-      <Layout
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-      >
-        <Button
+      <Layout style={{ flex: 1, alignItems: "center" }}>
+        <TouchableOpacity
           onPress={() => {
             navigation.navigate("RunDetails");
           }}
+          style={styles.card}
         >
-          Run Details
-        </Button>
+          <ListCard />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("RunDetails");
+          }}
+          style={styles.card}
+        >
+          <ListCard />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("RunDetails");
+          }}
+          style={styles.card}
+        >
+          <ListCard />
+        </TouchableOpacity>
       </Layout>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  card: {
+    marginBottom: 20,
+  },
+  image: {
+    height: 200,
+    width: 350,
+  },
+});
 
 export default RunListScreen;

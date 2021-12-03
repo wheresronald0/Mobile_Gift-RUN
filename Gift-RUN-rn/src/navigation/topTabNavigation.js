@@ -2,14 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import {
-  TabBar,
-  Tab,
-  TopNavigation,
-  Layout,
-  Text,
-  Divider,
-} from "@ui-kitten/components";
+import { TabBar, Tab } from "@ui-kitten/components";
 
 import ManualLogRunScreen from "../screens/ManualLogRunScreen";
 import AutoLogRunScreen from "../screens/AutoLogRunScreen";

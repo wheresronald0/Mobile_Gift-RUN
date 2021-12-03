@@ -15,11 +15,21 @@ const Header = (props) => {
 const Footer = (props) => {
   return (
     <View {...props}>
-      <Text category="h6">Run Details:</Text>
-      <Text category="s1">Date of Your Run</Text>
-      <Text category="s1">Total Miles You Ran</Text>
-      <Text category="s1">Total Run Time</Text>
-      <Text category="s1">Charity </Text>
+      <Text category="h6" style={styles.text}>
+        Run Details
+      </Text>
+      <Text category="s1" style={styles.text}>
+        Date of Your Run-
+      </Text>
+      <Text category="s1" style={styles.text}>
+        Total Miles You Ran-
+      </Text>
+      <Text category="s1" style={styles.text}>
+        Total Run Time-
+      </Text>
+      <Text category="s1" style={styles.text}>
+        Charity-
+      </Text>
     </View>
   );
 };
@@ -37,6 +47,9 @@ const RunCard = () => {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
+  },
+  text: {
+    margin: 8,
   },
 });
 

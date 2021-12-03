@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { Layout, Text, Input, Button } from "@ui-kitten/components";
+import { Layout, Input, Button } from "@ui-kitten/components";
 
 import { LogRunModal } from "../components/LogRunModal";
 

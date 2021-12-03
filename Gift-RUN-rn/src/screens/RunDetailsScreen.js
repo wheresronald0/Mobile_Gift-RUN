@@ -25,7 +25,7 @@ const RunDetailsScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TopNavigation
-        title="MyApp"
+        title="Run Details"
         alignment="center"
         accessoryLeft={BackAction}
       />
@@ -33,9 +33,6 @@ const RunDetailsScreen = ({ navigation }) => {
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
-        <Text category="h3" style={styles.title}>
-          Run Details
-        </Text>
         <RunCard />
       </Layout>
     </SafeAreaView>

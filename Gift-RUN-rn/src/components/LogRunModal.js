@@ -24,7 +24,8 @@ export const LogRunModal = ({ navigation }) => {
           <Button
             style={styles.button}
             onPress={() => {
-              navigation.navigate("userSettings"), setVisible(false);
+              navigation.navigate("ManuallyLog"), setVisible(false);
+              //onPress={() => {props.whichScreen()}}
             }}
           >
             Log Run Manually
@@ -32,7 +33,7 @@ export const LogRunModal = ({ navigation }) => {
           <Button
             onPress={() => {
               {
-                navigation.navigate("RunList"), setVisible(false);
+                navigation.navigate("Auto"), setVisible(false);
               }
             }}
           >
