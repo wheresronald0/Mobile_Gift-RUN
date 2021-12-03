@@ -1,28 +1,41 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { Layout, Text } from "@ui-kitten/components";
+import { Button, Card, Layout, Text } from "@ui-kitten/components";
 
-const SPCAcard = (props) => (
-  //pass it props.id so it know what details (pulled from Context state to load)
+const Header = (props) => (
+  <View {...props}>
+    <Text category="h6">SPCA</Text>
+  </View>
+);
 
-  <Layout>
-    <Image source={require("../assets/backdrop.jpeg")} style={styles.image} />
-    <View style={styles.container}>
-      <Text>-insert name state</Text>
-      <Text>Date of Run: </Text>
-    </View>
-  </Layout>
+const Footer = (props) => (
+  <View {...props} style={[props.style, styles.footerContainer]}>
+    <Text>
+      SPCA International works to stop the abuse and suffering of animals with
+      innovative programs that serve both animals and their human caretakers.
+    </Text>
+  </View>
+);
+
+const SPCAcard = ({ navigation }) => (
+  <React.Fragment>
+    <Card style={styles.card} header={Header} footer={Footer}>
+      <Image source={require("../../assets/spca.png")} style={styles.image} />
+    </Card>
+  </React.Fragment>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+  card: {
+    margin: 10,
+    width: 310,
+    alignItems: "center",
+    height: 360,
   },
   image: {
-    height: 200,
-    width: 350,
+    height: 150,
+    width: 300,
   },
 });
 
-export default SCPAcard;
+export default SPCAcard;
