@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useFocusEffect } from "@react-navigation/native";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import {
   Button,
   Icon,
@@ -15,9 +15,7 @@ import {
   Datepicker,
 } from "@ui-kitten/components";
 import RunDataContext from "../context/RunDataContext";
-import { LogRunModal } from "../components/LogRunModal";
 
-const BackIcon = (props) => <Icon {...props} name="arrow-back" />;
 const CalendarIcon = (props) => <Icon {...props} name="calendar" />;
 
 const LogRunScreen = ({ navigation }) => {
@@ -47,9 +45,8 @@ const LogRunScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }} screenOptions={{ headerShown: false }}>
-      <Layout>
-        <LogRunModal />
+    <SafeAreaView screenOptions={{ headerShown: false }}>
+      <Layout style={styles.container}>
         <Input
           label="Name of Your Run"
           placeholder="Enter Name"
@@ -119,22 +116,19 @@ const LogRunScreen = ({ navigation }) => {
         >
           Save Run
         </Button>
-        <Button
-          style={styles.input}
-          onPress={() => {
-            navigation.navigate("AutoLogRun");
-          }}
-        >
-          Auto Log Run
-        </Button>
       </Layout>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 30,
+    height: "100%",
+  },
   input: {
-    margin: 20,
+    marginVertical: 15,
+    marginHorizontal: 20,
   },
 });
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
@@ -28,6 +29,7 @@ const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
+    style={styles.container}
   >
     <BottomNavigationTab icon={PersonIcon} title="Your Runs" />
     <BottomNavigationTab icon={SheildIcon} title="Badges" />
@@ -51,6 +53,13 @@ const TabNavigator = () => (
     <Screen name="AutoLogRun" component={AutoLogRunScreen} />
   </Navigator>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 20,
+    paddingTop: 6,
+  },
+});
 
 export const BottomBarNavigator = () => (
   <NavigationContainer>

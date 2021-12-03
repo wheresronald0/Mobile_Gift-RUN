@@ -1,34 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import {
-  Divider,
-  Icon,
-  Layout,
-  Text,
-  TopNavigation,
-  TopNavigationAction,
-} from "@ui-kitten/components";
+import { Layout, Text, Input, Button } from "@ui-kitten/components";
+
+import { LogRunModal } from "../components/LogRunModal";
 
 import Map from "../components/Map";
 
 const RunDetailsScreen = ({}) => {
+  const [autoRunName, setAutoRunName] = useState("");
+
   return (
-    <SafeAreaView style={{}}>
-      <Layout
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text category="h3" style={styles.title}>
-          Track Your Run
-        </Text>
+    <SafeAreaView>
+      <Layout style={styles.container}>
+        <LogRunModal />
+
+        <Input
+          label="Name of Your Run"
+          placeholder="Enter Name"
+          value={autoRunName}
+          autoCapitalize="words"
+          onChangeText={(name) => setAutoRunName(name)}
+          style={styles.input}
+        />
         <Map />
+        <Button style={styles.button}>Save</Button>
       </Layout>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    height: "100%",
+  },
+  input: {
+    marginTop: 30,
+    marginHorizontal: 20,
+    paddingBottom: 30,
+  },
+  button: {
+    marginTop: 30,
+    width: "90%",
+  },
+});
 
 export default RunDetailsScreen;

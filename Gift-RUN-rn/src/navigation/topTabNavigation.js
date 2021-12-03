@@ -11,9 +11,8 @@ import {
   Divider,
 } from "@ui-kitten/components";
 
-import LogRunScreen from "../screens/LogRunScreen";
+import ManualLogRunScreen from "../screens/ManualLogRunScreen";
 import AutoLogRunScreen from "../screens/AutoLogRunScreen";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const { Navigator, Screen } = createMaterialTopTabNavigator();
 
@@ -23,22 +22,22 @@ const TopTabBar = ({ navigation, state }) => (
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
-    <Tab title="Manually Log" style={styles.tabContainer} />
     <Tab title="Automatically Log" style={styles.tabContainer} />
+    <Tab title="Manually Log" style={styles.tabContainer} />
   </TabBar>
 );
 
 const TabNavigator = () => (
   <Navigator tabBar={(props) => <TopTabBar {...props} />}>
-    <Screen name="ManLog" component={AutoLogRunScreen} />
-    <Screen name="AutoLog" component={LogRunScreen} />
+    <Screen name="AutoLog" component={AutoLogRunScreen} />
+    <Screen name="ManuallyLog" component={ManualLogRunScreen} />
   </Navigator>
 );
 
 const styles = StyleSheet.create({
   tabContainer: {
     marginTop: 40,
-    height: 50,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
   },
