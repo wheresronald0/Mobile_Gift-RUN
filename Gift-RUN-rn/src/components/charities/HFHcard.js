@@ -4,23 +4,24 @@ import { Button, Card, Layout, Text } from "@ui-kitten/components";
 
 const Header = (props) => (
   <View {...props}>
-    <Text category="h6">SPCA</Text>
+    <Text category="h6">Habitat for Humanity</Text>
   </View>
 );
 
 const Footer = (props) => (
   <View {...props} style={[props.style, styles.footerContainer]}>
     <Text>
-      SPCA International works to stop the abuse and suffering of animals with
-      innovative programs that serve both animals and their human caretakers.
+      Habitat for Humanity is a nonprofit organization that helps people in your
+      community and around the world build or improve a place they can call
+      home.
     </Text>
   </View>
 );
 
-const SPCAcard = ({ navigation }) => (
+const HFHcard = ({ navigation }) => (
   <React.Fragment>
     <Card style={styles.card} header={Header} footer={Footer}>
-      <Image source={require("../../assets/spca.png")} style={styles.image} />
+      <Image source={require("../../assets/HH.png")} style={styles.image} />
     </Card>
   </React.Fragment>
 );
@@ -38,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SPCAcard;
+export default HFHcard;

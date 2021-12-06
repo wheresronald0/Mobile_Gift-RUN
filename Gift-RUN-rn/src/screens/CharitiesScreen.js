@@ -9,6 +9,9 @@ import {
 } from "@ui-kitten/components";
 
 import SPCAcard from "../components/charities/SPCAcard";
+import ACScard from "../components/charities/ACSard";
+import STCcard from "../components/charities/STCcard";
+import HFHcard from "../components/charities/HFHcard";
 
 const CharitiesScreen = ({ navigation }) => {
   return (
@@ -37,12 +40,9 @@ const CharitiesScreen = ({ navigation }) => {
                 navigation.navigate("RunDetails");
               }}
             />
-            <SPCAcard
-              onPress={() => {
-                navigation.navigate("RunDetails");
-              }}
-              style={styles.card}
-            />
+            <ACScard onPress={() => {}} style={styles.card} />
+            <STCcard onPress={() => {}} style={styles.card} />
+            <HFHcard onPress={() => {}} style={styles.card} />
           </ScrollView>
         </View>
       </Layout>
@@ -58,10 +58,6 @@ const styles = StyleSheet.create({
   text: {
     width: "90%",
     marginBottom: 40,
-  },
-  card: {
-    marginRight: 20,
-    width: 100,
   },
 });
 
