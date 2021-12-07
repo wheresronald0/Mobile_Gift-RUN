@@ -11,7 +11,7 @@ import { TopNavigator } from "./topTabNavigation";
 import { RunListNavigator } from "./mainNavigationFlow";
 import CharitiesScreen from "../screens/CharitiesScreen";
 import UserSettingsScreen from "../screens/UserSettingsScreen";
-import BadgesScreen from "../screens/BadgesScreen";
+import ProgressScreen from "../screens/ProgressScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,7 @@ const Tab = createBottomTabNavigator();
 const PersonIcon = (props) => <Icon {...props} name="person-outline" />;
 const SettingsIcon = (props) => <Icon {...props} name="settings-2-outline" />;
 const AddIcon = (props) => <Icon {...props} name="radio-button-on-outline" />;
-const SheildIcon = (props) => <Icon {...props} name="shield-outline" />;
+const Progress = (props) => <Icon {...props} name="trending-up-outline" />;
 const HeartIcon = (props) => <Icon {...props} name="heart-outline" />;
 
 //UI Kitten Styling
@@ -30,7 +30,7 @@ const BottomTabBar = ({ navigation, state }) => (
     style={styles.container}
   >
     <BottomNavigationTab icon={PersonIcon} title="Your Runs" />
-    <BottomNavigationTab icon={SheildIcon} title="Badges" />
+    <BottomNavigationTab icon={Progress} title="Progress" />
     <BottomNavigationTab icon={AddIcon} title="Log a Run" />
     <BottomNavigationTab icon={HeartIcon} title="Charities" />
     <BottomNavigationTab icon={SettingsIcon} title="Setings" />
@@ -45,10 +45,26 @@ const TabNavigator = () => (
       options={{ headerShown: false }}
       component={RunListNavigator}
     />
-    <Tab.Screen name="Badges" component={BadgesScreen} />
-    <Tab.Screen name="LogRun" component={TopNavigator} />
-    <Tab.Screen name="Charities" component={CharitiesScreen} />
-    <Tab.Screen name="UserSettings" component={UserSettingsScreen} />
+    <Tab.Screen
+      name="Badges"
+      options={{ headerShown: false }}
+      component={ProgressScreen}
+    />
+    <Tab.Screen
+      name="LogRun"
+      options={{ headerShown: false }}
+      component={TopNavigator}
+    />
+    <Tab.Screen
+      name="Charities"
+      options={{ headerShown: false }}
+      component={CharitiesScreen}
+    />
+    <Tab.Screen
+      name="UserSettings"
+      options={{ headerShown: false }}
+      component={UserSettingsScreen}
+    />
   </Tab.Navigator>
 );
 
@@ -60,7 +76,3 @@ const styles = StyleSheet.create({
 });
 
 export const BottomBarNavigator = () => <TabNavigator />;
-
-/*
-
- */

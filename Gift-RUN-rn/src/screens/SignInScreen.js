@@ -50,7 +50,7 @@ const SignInScreen = ({ navigation }) => {
         <View style={styles.captionContainer}>
           {AlertIcon(styles.captionIcon)}
           <Text style={styles.captionText}>
-            Should contain at least 8 symbols
+            Should contain at least 8 characters
           </Text>
         </View>
       );
@@ -86,7 +86,12 @@ const SignInScreen = ({ navigation }) => {
           onChangeText={(nextValue) => setPassword(nextValue)}
           style={styles.input}
         />
-        <Button onPress={() => {}} style={styles.button}>
+        <Button
+          onPress={() => {
+            navigation.navigate("MainFlow");
+          }}
+          style={styles.button}
+        >
           Sign In
         </Button>
       </Layout>
@@ -109,11 +114,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    marginTop: 5,
   },
   captionIcon: {
     width: 10,
     height: 10,
-    marginRight: 5,
+    marginRight: 4,
   },
   captionText: {
     fontSize: 12,

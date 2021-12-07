@@ -31,7 +31,7 @@ const SignUpScreen = ({ navigation }) => {
         <View style={styles.captionContainer}>
           {AlertIcon(styles.captionIcon)}
           <Text style={styles.captionText}>
-            Should contain at least 8 symbols
+            Should contain at least 8 characters
           </Text>
         </View>
       );
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    marginTop: 4,
   },
   captionIcon: {
     width: 10,

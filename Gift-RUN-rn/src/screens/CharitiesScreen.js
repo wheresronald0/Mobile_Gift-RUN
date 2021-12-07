@@ -17,7 +17,7 @@ const CharitiesScreen = ({ navigation }) => {
       />
       <Divider />
       <Layout style={{ flex: 1, alignItems: "center" }}>
-        <Text category="h3" style={styles.title}>
+        <Text category="h5" style={styles.title}>
           Gift-RUN - where your miles go a long way!
         </Text>
         <Text style={styles.text}>
