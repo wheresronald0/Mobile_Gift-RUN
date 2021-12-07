@@ -25,7 +25,7 @@ export const LogRunModal = ({ navigation }) => {
             style={styles.button}
             onPress={() => {
               navigation.navigate("ManuallyLog"), setVisible(false);
-              //onPress={() => {props.whichScreen()}}
+              //onPress={() => {props.screenSelect(man)}}
             }}
           >
             Log Run Manually

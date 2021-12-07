@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
-import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
+import { SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
+import { Divider, Layout, TopNavigation } from "@ui-kitten/components";
 
 import ListCard from "../components/ListTile";
 

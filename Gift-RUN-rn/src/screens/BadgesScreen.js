@@ -1,7 +1,6 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
-import { LogRunModal } from "../components/LogRunModal";
 
 const BadgesScreen = ({ navigation }) => {
   return (

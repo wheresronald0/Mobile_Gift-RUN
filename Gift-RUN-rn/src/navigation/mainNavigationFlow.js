@@ -4,13 +4,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RunListScreen from "../screens/RunListScreen";
 import RunDetailsScreen from "../screens/RunDetailsScreen";
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const HomeNavigator = () => (
-  <Navigator screenOptions={{ headerShown: false }}>
-    <Screen name="RunList" component={RunListScreen} />
-    <Screen name="RunDetails" component={RunDetailsScreen} />
-  </Navigator>
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="RunList" component={RunListScreen} />
+    <Stack.Screen name="RunDetails" component={RunDetailsScreen} />
+  </Stack.Navigator>
 );
 
 export const RunListNavigator = () => <HomeNavigator />;

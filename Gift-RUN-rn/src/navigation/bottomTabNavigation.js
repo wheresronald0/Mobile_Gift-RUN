@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   BottomNavigation,
@@ -13,9 +12,8 @@ import { RunListNavigator } from "./mainNavigationFlow";
 import CharitiesScreen from "../screens/CharitiesScreen";
 import UserSettingsScreen from "../screens/UserSettingsScreen";
 import BadgesScreen from "../screens/BadgesScreen";
-import AutoLogRunScreen from "../screens/AutoLogRunScreen";
 
-const { Navigator, Screen, Group } = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 //Icons
 const PersonIcon = (props) => <Icon {...props} name="person-outline" />;
@@ -41,17 +39,17 @@ const BottomTabBar = ({ navigation, state }) => (
 
 //RNav Bottom Bar
 const TabNavigator = () => (
-  <Navigator
-    tabBar={(props) => <BottomTabBar {...props} />}
-    screenOptions={{ headerShown: false }}
-  >
-    <Screen name="ListFlow" component={RunListNavigator} />
-    <Screen name="Badges" component={BadgesScreen} />
-    <Screen name="LogRun" component={TopNavigator} />
-    <Screen name="Charities" component={CharitiesScreen} />
-    <Screen name="UserSettings" component={UserSettingsScreen} />
-    <Screen name="AutoLogRun" component={AutoLogRunScreen} />
-  </Navigator>
+  <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+    <Tab.Screen
+      name="ListFlow"
+      options={{ headerShown: false }}
+      component={RunListNavigator}
+    />
+    <Tab.Screen name="Badges" component={BadgesScreen} />
+    <Tab.Screen name="LogRun" component={TopNavigator} />
+    <Tab.Screen name="Charities" component={CharitiesScreen} />
+    <Tab.Screen name="UserSettings" component={UserSettingsScreen} />
+  </Tab.Navigator>
 );
 
 const styles = StyleSheet.create({
@@ -61,11 +59,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const BottomBarNavigator = () => (
-  <NavigationContainer>
-    <TabNavigator />
-  </NavigationContainer>
-);
+export const BottomBarNavigator = () => <TabNavigator />;
 
 /*
 

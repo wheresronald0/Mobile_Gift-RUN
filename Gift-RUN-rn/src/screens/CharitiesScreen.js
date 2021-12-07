@@ -1,12 +1,6 @@
 import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
-import {
-  Button,
-  Divider,
-  Layout,
-  TopNavigation,
-  Text,
-} from "@ui-kitten/components";
+import { Divider, Layout, TopNavigation, Text } from "@ui-kitten/components";
 
 import SPCAcard from "../components/charities/SPCAcard";
 import ACScard from "../components/charities/ACSard";

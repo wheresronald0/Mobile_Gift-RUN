@@ -1,13 +1,12 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { TabBar, Tab } from "@ui-kitten/components";
 
 import ManualLogRunScreen from "../screens/ManualLogRunScreen";
 import AutoLogRunScreen from "../screens/AutoLogRunScreen";
 
-const { Navigator, Screen } = createMaterialTopTabNavigator();
+const Top = createMaterialTopTabNavigator();
 
 //UI Kitten Styling
 const TopTabBar = ({ navigation, state }) => (
@@ -21,10 +20,10 @@ const TopTabBar = ({ navigation, state }) => (
 );
 
 const TabNavigator = () => (
-  <Navigator tabBar={(props) => <TopTabBar {...props} />}>
-    <Screen name="AutoLog" component={AutoLogRunScreen} />
-    <Screen name="ManuallyLog" component={ManualLogRunScreen} />
-  </Navigator>
+  <Top.Navigator tabBar={(props) => <TopTabBar {...props} />}>
+    <Top.Screen name="AutoLog" component={AutoLogRunScreen} />
+    <Top.Screen name="ManuallyLog" component={ManualLogRunScreen} />
+  </Top.Navigator>
 );
 
 const styles = StyleSheet.create({
