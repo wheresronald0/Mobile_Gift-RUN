@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
+app.use(authRoutes);
 
 const mongoURI =
   "mongodb+srv://admin:admin1@cluster0.ibdxc.mongodb.net/Gift-RUN?retryWrites=true&w=majority";
