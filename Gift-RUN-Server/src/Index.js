@@ -1,14 +1,18 @@
 require("./models/Users");
+require("./models/Run");
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
+const runRoutes = require("./routes/runRoutes");
 const requireAuth = require("./middleware/requireAuth");
 
 const app = express();
 
 app.use(bodyParser.json()); //enables express to read a json obj
 app.use(authRoutes);
+app.use(runRoutes);
 
 const mongoURI =
   "mongodb+srv://admin:admin1@cluster0.ibdxc.mongodb.net/Gift-RUN?retryWrites=true&w=majority";

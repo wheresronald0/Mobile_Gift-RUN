@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     return res.status(401).send({ error: "You have to log in" });
   }
 
-  const token = authorization.replace("Bearer ", "");
+  const token = authorization.replace("Bearer ", ""); //grab the token out of the header
   jwt.verify(token, "wheres_Ronald0s_Key", async (err, payload) => {
     if (err) {
       return res.status(401).send({ error: "Your authentication failed" });

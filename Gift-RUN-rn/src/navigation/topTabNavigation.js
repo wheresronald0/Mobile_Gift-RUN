@@ -14,7 +14,7 @@ const TopTabBar = ({ navigation, state }) => (
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
-    <Tab title="Automatically Log" style={styles.tabContainer} />
+    <Tab title="Automatically Track" style={styles.tabContainer} />
     <Tab title="Manually Log" style={styles.tabContainer} />
   </TabBar>
 );

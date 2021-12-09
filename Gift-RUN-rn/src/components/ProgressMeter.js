@@ -15,7 +15,7 @@ const ProgressMeter = ({ milesCompleted, showButton, imageSrc }) => {
         bgColor="#fff"
       >
         <Text category="h6" style={styles.text}>
-          {milesCompleted}
+          {milesCompleted} Miles
         </Text>
         <Text category="c1" style={{}}>
           Completed

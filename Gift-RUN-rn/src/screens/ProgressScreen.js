@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, View, Image, FlatList } from "react-native";
-import {
-  Text,
-  Button,
-  Divider,
-  Layout,
-  TopNavigation,
-} from "@ui-kitten/components";
+import { Text } from "@ui-kitten/components";
 import ProgressMeter from "../components/ProgressMeter";
 
 const BadgesScreen = ({}) => {

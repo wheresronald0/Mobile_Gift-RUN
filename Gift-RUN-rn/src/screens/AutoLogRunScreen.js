@@ -23,7 +23,7 @@ const RunDetailsScreen = ({}) => {
           style={styles.input}
         />
         <Map />
-        <Button style={styles.button}>Save</Button>
+        <Button style={styles.button}>Start Tracking</Button>
       </Layout>
     </SafeAreaView>
   );

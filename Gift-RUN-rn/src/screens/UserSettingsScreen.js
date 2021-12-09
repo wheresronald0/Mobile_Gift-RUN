@@ -1,7 +1,8 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Button, Divider, Layout, TopNavigation } from "@ui-kitten/components";
-import { LogRunModal } from "../components/LogRunModal";
+
+import DistanceCalc from "../components/distanceCalc";
 
 const UserSettingScreen = ({ navigation }) => {
   return (
@@ -10,7 +11,9 @@ const UserSettingScreen = ({ navigation }) => {
       <Divider />
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-      ></Layout>
+      >
+        <DistanceCalc />
+      </Layout>
     </SafeAreaView>
   );
 };
