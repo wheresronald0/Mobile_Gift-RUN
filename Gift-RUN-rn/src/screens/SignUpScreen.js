@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   TouchableWithoutFeedback,
   StyleSheet,
@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Button, Icon, Input, Text } from "@ui-kitten/components";
+import UserAuthContext from "../context/UserAuthContext";
 
 const AlertIcon = (props) => <Icon {...props} name="alert-circle-outline" />;
 
@@ -13,6 +14,8 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const { state, signUp } = useContext(UserAuthContext);
 
   //Password visible? functionality
   const toggleSecureEntry = () => {
@@ -60,7 +63,7 @@ const SignUpScreen = ({ navigation }) => {
         onChangeText={(nextValue) => setPassword(nextValue)}
         style={styles.input}
       />
-      <Button onPress={() => {}} style={styles.button}>
+      <Button onPress={signUp(email, password)} style={styles.button}>
         Save
       </Button>
       <TouchableOpacity
