@@ -14,4 +14,29 @@ router.get("/runs", async (req, res) => {
   res.send(runs);
 });
 
+router.post("/runs", async (req, res) => {
+  const { name, date, totalMiles, totalMinutes, locations, charity } = req.body;
+
+  if (!totalMiles || !charity) {
+    return res.status(422).send({
+      error: "Please provide # of miles you ran and the charity you chose",
+    });
+  }
+
+  try {
+    const run = new Run({
+      name: name,
+      date: date,
+      totalMiles: totalMiles,
+      totalMinutes: totalMinutes,
+      locations: locations,
+      userId: req.user._id,
+    });
+    await run.save();
+    res.send(run);
+  } catch (err) {
+    res.status(422).send({ error: err.message });
+  }
+});
+
 module.exports = router;
