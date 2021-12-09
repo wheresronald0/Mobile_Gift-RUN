@@ -8,29 +8,32 @@ import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import { UserAuthNavigator } from "./src/navigation/userAuthNavigation";
 import { BottomBarNavigator } from "./src/navigation/bottomTabNavigation";
 import { RunDataProvider } from "./src/context/RunDataContext";
+import { AuthProvider } from "./src/context/UserAuthContext";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export default () => (
   <>
-    <RunDataProvider>
-      <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.light}>
-        <NavigationContainer>
-          <Navigator>
-            <Screen
-              name="AuthFlow"
-              options={{ headerShown: false }}
-              component={UserAuthNavigator}
-            />
-            <Screen
-              name="MainFlow"
-              options={{ headerShown: false }}
-              component={BottomBarNavigator}
-            />
-          </Navigator>
-        </NavigationContainer>
-      </ApplicationProvider>
-    </RunDataProvider>
+    <AuthProvider>
+      <RunDataProvider>
+        <IconRegistry icons={EvaIconsPack} />
+        <ApplicationProvider {...eva} theme={eva.light}>
+          <NavigationContainer>
+            <Navigator>
+              <Screen
+                name="AuthFlow"
+                options={{ headerShown: false }}
+                component={UserAuthNavigator}
+              />
+              <Screen
+                name="MainFlow"
+                options={{ headerShown: false }}
+                component={BottomBarNavigator}
+              />
+            </Navigator>
+          </NavigationContainer>
+        </ApplicationProvider>
+      </RunDataProvider>
+    </AuthProvider>
   </>
 );
