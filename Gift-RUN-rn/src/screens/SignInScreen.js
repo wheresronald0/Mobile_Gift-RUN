@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Text,
   StyleSheet,
@@ -15,6 +15,7 @@ import {
   Input,
   Button,
 } from "@ui-kitten/components";
+import UserAuthContext from "../context/UserAuthContext";
 
 const AlertIcon = (props) => <Icon {...props} name="alert-circle-outline" />;
 const BackIcon = (props) => <Icon {...props} name="arrow-back" />;
@@ -23,6 +24,8 @@ const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const { state, signIn } = useContext(UserAuthContext);
 
   //UI Kitten Navigation
   const navigateBack = () => {
@@ -61,19 +64,21 @@ const SignInScreen = ({ navigation }) => {
   //----END----Password visible? functionality
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView>
       <TopNavigation
         title="Your Gift-RUN Account"
         alignment="center"
         accessoryLeft={BackAction}
       />
       <Divider />
-      <Layout>
+      <Layout style={{ height: "100%" }}>
         <Input
           value={email}
           label="User Name"
           placeholder="Enter User Name"
           onChangeText={(nextValue) => setEmail(nextValue)}
+          autoCapitalize="none"
+          autoCorrect={false}
           style={styles.input}
         />
         <Input
@@ -84,16 +89,26 @@ const SignInScreen = ({ navigation }) => {
           accessoryRight={renderIcon}
           secureTextEntry={secureTextEntry}
           onChangeText={(nextValue) => setPassword(nextValue)}
+          autoCapitalize="none"
+          autoCorrect={false}
           style={styles.input}
         />
+        <Button onPress={signIn(email, password)} style={styles.button}>
+          Sign In
+        </Button>
         <Button
           onPress={() => {
             navigation.navigate("MainFlow");
           }}
           style={styles.button}
         >
-          Sign In
+          Flow
         </Button>
+        {state.message ? (
+          <Text category="p1" style={styles.errorText}>
+            {state.message}
+          </Text>
+        ) : null}
       </Layout>
     </SafeAreaView>
   );
@@ -107,6 +122,12 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 50,
     marginHorizontal: 20,
+  },
+  errorText: {
+    marginTop: 20,
+    marginHorizontal: 20,
+    alignSelf: "center",
+    color: "red",
   },
 
   //Password input styling

@@ -5,8 +5,14 @@ const UserAuthContext = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "sign_up":
-      console.log("sign up");
+    case "auth_success":
+      return { ...state, token: action.payload, errorMessage: "" };
+    case "auth_failed":
+      return {
+        ...state,
+        errorMessage:
+          "Our appologies, but sosmething went wrong. Please check the information entered",
+      };
     default:
       return state;
   }
@@ -15,6 +21,7 @@ const reducer = (state, action) => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     isLoggedIn: false,
+    errorMessage: "",
   });
 
   const signUp = (email, password) => {
@@ -25,15 +32,33 @@ export const AuthProvider = ({ children }) => {
           password: password,
         });
         console.log(response.data.token);
+        dispatch({ type: "auth_success", payload: response.data.token });
       } catch (err) {
-        console.log("not working");
+        console.log(err);
+        dispatch({
+          type: "auth_failed",
+        });
       }
     };
   };
 
   //signin
-  const signIn = () => {
-    return;
+  const signIn = (email, password) => {
+    return async () => {
+      try {
+        const response = await dbConnectApi.post("/signin", {
+          email: email,
+          password: password,
+        });
+        console.log(response.data.token);
+        dispatch({ type: "auth_success", payload: response.data.token });
+      } catch (err) {
+        console.log(err);
+        dispatch({
+          type: "auth_failed",
+        });
+      }
+    };
   };
 
   return (

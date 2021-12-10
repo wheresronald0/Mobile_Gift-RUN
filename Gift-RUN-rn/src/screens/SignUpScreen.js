@@ -51,6 +51,8 @@ const SignUpScreen = ({ navigation }) => {
         label="User Name"
         placeholder="Enter User Name"
         onChangeText={(nextValue) => setEmail(nextValue)}
+        autoCapitalize="none"
+        autoCorrect={false}
         style={styles.input}
       />
       <Input
@@ -61,10 +63,12 @@ const SignUpScreen = ({ navigation }) => {
         accessoryRight={renderIcon}
         secureTextEntry={secureTextEntry}
         onChangeText={(nextValue) => setPassword(nextValue)}
+        autoCapitalize="none"
+        autoCorrect={false}
         style={styles.input}
       />
       <Button onPress={signUp(email, password)} style={styles.button}>
-        Save
+        Sign Up
       </Button>
       <TouchableOpacity
         onPress={() => {
@@ -72,6 +76,11 @@ const SignUpScreen = ({ navigation }) => {
         }}
         style={styles.text}
       >
+        {state.message ? (
+          <Text category="p1" style={styles.errorText}>
+            {state.message}
+          </Text>
+        ) : null}
         <Text category="p1" status="primary" style={styles.text}>
           Already Have a Gift-RUN Account?
         </Text>
@@ -93,6 +102,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 20,
     alignSelf: "center",
+  },
+  errorText: {
+    marginTop: 20,
+    marginHorizontal: 20,
+    alignSelf: "center",
+    color: "red",
   },
 
   //Password input styling
