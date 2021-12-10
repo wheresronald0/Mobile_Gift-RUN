@@ -20,6 +20,8 @@ const reducer = (state, action) => {
         errorMessage:
           "Our appologies, but sosmething went wrong. Please check the information entered",
       };
+    case "sign_out":
+      return { ...state, token: null };
     default:
       return state;
   }
@@ -32,6 +34,7 @@ export const AuthProvider = ({ children }) => {
     token: null,
   });
 
+  //Check to see if token is locally stored, i.e. user has already logged in
   const tryLocalSignin = async () => {
     const token = await AsyncStorage.getItem("token");
     console.log("got the token:", token);
@@ -85,6 +88,12 @@ export const AuthProvider = ({ children }) => {
     };
   };
 
+  const signOut = async () => {
+    await AsyncStorage.clear();
+    dispatch({ type: "sign_out" });
+    RootNavigation.navigate("AuthFlow");
+  };
+
   return (
     <UserAuthContext.Provider
       value={{
@@ -92,6 +101,7 @@ export const AuthProvider = ({ children }) => {
         signUp: signUp,
         signIn: signIn,
         tryLocalSignin: tryLocalSignin,
+        signOut: signOut,
       }}
     >
       {children}

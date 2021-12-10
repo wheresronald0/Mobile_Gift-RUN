@@ -4,8 +4,17 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
-import { Button, Icon, Input, Text } from "@ui-kitten/components";
+import {
+  Button,
+  Icon,
+  Input,
+  Text,
+  Divider,
+  Layout,
+  TopNavigation,
+} from "@ui-kitten/components";
 import UserAuthContext from "../context/UserAuthContext";
 
 const AlertIcon = (props) => <Icon {...props} name="alert-circle-outline" />;
@@ -45,47 +54,51 @@ const SignUpScreen = ({ navigation }) => {
   //----END----Password visible? functionality
 
   return (
-    <>
-      <Input
-        value={email}
-        label="User Name"
-        placeholder="Enter User Name"
-        onChangeText={(nextValue) => setEmail(nextValue)}
-        autoCapitalize="none"
-        autoCorrect={false}
-        style={styles.input}
-      />
-      <Input
-        value={password}
-        label="Password"
-        placeholder="Enter Password"
-        caption={renderCaption}
-        accessoryRight={renderIcon}
-        secureTextEntry={secureTextEntry}
-        onChangeText={(nextValue) => setPassword(nextValue)}
-        autoCapitalize="none"
-        autoCorrect={false}
-        style={styles.input}
-      />
-      <Button onPress={signUp(email, password)} style={styles.button}>
-        Sign Up
-      </Button>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("SignIn");
-        }}
-        style={styles.text}
-      >
-        {state.message ? (
-          <Text category="p1" style={styles.errorText}>
-            {state.message}
+    <SafeAreaView style={{ flex: 1 }}>
+      <TopNavigation title="Get a Gift-RUN Account" alignment="center" />
+      <Divider />
+      <Layout style={{ height: "100%" }}>
+        <Input
+          value={email}
+          label="User Name"
+          placeholder="Enter User Name"
+          onChangeText={(nextValue) => setEmail(nextValue)}
+          autoCapitalize="none"
+          autoCorrect={false}
+          style={styles.input}
+        />
+        <Input
+          value={password}
+          label="Password"
+          placeholder="Enter Password"
+          caption={renderCaption}
+          accessoryRight={renderIcon}
+          secureTextEntry={secureTextEntry}
+          onChangeText={(nextValue) => setPassword(nextValue)}
+          autoCapitalize="none"
+          autoCorrect={false}
+          style={styles.input}
+        />
+        <Button onPress={signUp(email, password)} style={styles.button}>
+          Sign Up
+        </Button>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("SignIn");
+          }}
+          style={styles.text}
+        >
+          {state.message ? (
+            <Text category="p1" style={styles.errorText}>
+              {state.message}
+            </Text>
+          ) : null}
+          <Text category="p1" status="primary" style={styles.text}>
+            Already Have a Gift-RUN Account?
           </Text>
-        ) : null}
-        <Text category="p1" status="primary" style={styles.text}>
-          Already Have a Gift-RUN Account?
-        </Text>
-      </TouchableOpacity>
-    </>
+        </TouchableOpacity>
+      </Layout>
+    </SafeAreaView>
   );
 };
 
