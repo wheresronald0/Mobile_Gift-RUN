@@ -9,6 +9,8 @@ import { UserAuthNavigator } from "./src/navigation/userAuthNavigation";
 import { BottomBarNavigator } from "./src/navigation/bottomTabNavigation";
 import { RunDataProvider } from "./src/context/RunDataContext";
 import { AuthProvider } from "./src/context/UserAuthContext";
+import { navigationRef } from "./src/navigation/RootNavigation";
+import InitialLoadingScreen from "./src/screens/InitialLoadingScreen";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -18,8 +20,13 @@ export default () => (
       <RunDataProvider>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider {...eva} theme={eva.light}>
-          <NavigationContainer>
+          <NavigationContainer ref={navigationRef}>
             <Navigator>
+              <Screen
+                name="LocalTokenAuthCheck"
+                options={{ headerShown: false }}
+                component={InitialLoadingScreen}
+              />
               <Screen
                 name="AuthFlow"
                 options={{ headerShown: false }}
