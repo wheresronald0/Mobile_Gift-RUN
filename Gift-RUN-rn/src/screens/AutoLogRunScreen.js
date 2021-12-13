@@ -8,10 +8,11 @@ import { LogRunModal } from "../components/LogRunModal";
 
 import RunDataContext from "../context/RunDataContext";
 import useLocation from "../hooks/useLocation";
+import AutoLogTrackForm from "../components/AutoLogTrackForm";
 
 const RunDetailsScreen = () => {
-  const [autoRunName, setAutoRunName] = useState("");
-  const { state, addLocation } = useContext(RunDataContext);
+  //const [autoRunName, setAutoRunName] = useState("");
+  const { state, addLocation, changeRunName } = useContext(RunDataContext);
 
   // to trigger "on/off isTracking once I've navigated from the screen to save battery"
   const shouldTrack = useIsFocused();
@@ -31,14 +32,14 @@ const RunDetailsScreen = () => {
         <Input
           label="Name of Your Run"
           placeholder="Enter Name"
-          value={autoRunName}
+          value={state.runName}
           autoCapitalize="words"
-          onChangeText={(name) => setAutoRunName(name)}
+          onChangeText={(name) => changeRunName(name)}
           style={styles.input}
         />
         <Map />
         {err ? <Text>Please enable location services</Text> : null}
-        <Button style={styles.button}>Start Tracking</Button>
+        <AutoLogTrackForm style={styles.form} />
       </Layout>
     </SafeAreaView>
   );
@@ -54,9 +55,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingBottom: 30,
   },
-  button: {
-    marginTop: 30,
-    width: "90%",
+  form: {
+    //margin: 30,
   },
 });
 
