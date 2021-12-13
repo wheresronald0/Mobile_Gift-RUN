@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
+import { useIsFocused } from "@react-navigation/native";
 import { Layout, Input, Button } from "@ui-kitten/components";
 
+import Map from "../components/Map";
 import { LogRunModal } from "../components/LogRunModal";
 
-import Map from "../components/Map";
+import RunDataContext from "../context/RunDataContext";
+import useLocation from "../hooks/useLocation";
 
-const RunDetailsScreen = ({}) => {
+const RunDetailsScreen = () => {
   const [autoRunName, setAutoRunName] = useState("");
+  const { state, addLocation } = useContext(RunDataContext);
+
+  // to trigger "on/off isTracking once I've navigated from the screen to save battery"
+  const shouldTrack = useIsFocused();
+
+  const callback = useCallback(
+    (location) => {
+      addLocation(location, state.recording);
+    },
+    [state.recording]
+  );
+
+  const [err] = useLocation(shouldTrack || state.recording, callback); //deconstructed return statment from useLocation hook
 
   return (
     <SafeAreaView>
       <Layout style={styles.container}>
-        <LogRunModal />
-
         <Input
           label="Name of Your Run"
           placeholder="Enter Name"
@@ -23,6 +37,7 @@ const RunDetailsScreen = ({}) => {
           style={styles.input}
         />
         <Map />
+        {err ? <Text>Please enable location services</Text> : null}
         <Button style={styles.button}>Start Tracking</Button>
       </Layout>
     </SafeAreaView>
