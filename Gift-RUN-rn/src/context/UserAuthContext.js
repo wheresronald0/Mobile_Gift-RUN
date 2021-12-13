@@ -18,7 +18,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         errorMessage:
-          "Our appologies, but sosmething went wrong. Please check the information entered",
+          "Our appologies, but something went wrong. Please check the information entered",
       };
     case "sign_out":
       return { ...state, token: null };
